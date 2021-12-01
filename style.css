@@ -1,0 +1,35 @@
+#btnContainer{
+    text-align: center;
+}
+
+#btnContainer #stopBtn{
+    display:none;
+}
+
+
+
+#bg{
+    background-image:url('./images/bg.png');
+    background-size:cover;
+    width:800px;
+    height:600px;
+    transform: translate3d(40%,5%,0);
+}
+
+#bg #hero{
+    background-image:url('./images/hero.png');
+    position:absolute;
+    width:35px;
+    height:54px;
+    top:540px;
+    left:400px;
+    background-position:0px;
+}
+
+#bg #enemy{
+    background-image:url('./images/enemy.png');
+    position:absolute;
+    width:45px;
+    height:54px;
+    background-position:0px;
+}
