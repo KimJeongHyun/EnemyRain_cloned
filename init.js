@@ -30,6 +30,7 @@ const removeEnemies = () =>{
 }
 
 const startFunc = () =>{
+    document.getElementById('hero').style.display='block';
     document.getElementById('startBtn').style.display='none';
     document.getElementById('stopBtn').style.display='inline-block';
     
@@ -85,27 +86,26 @@ const startFunc = () =>{
 const stopFunc = () =>{
     clearInterval(interval);
     removeEnemies();
-    new Hero().initHeroPosition();
     initScore();
-
     document.getElementById('stopBtn').style.display='none';
+    document.getElementById('hero').style.display='none';
     document.getElementById('startBtn').style.display='inline-block';
 }
 
 const endFunc = () =>{
     clearInterval(interval);
     removeEnemies();
-    new Hero().initHeroPosition();
     getTotalScore();
     initScore();
 
     document.getElementById('bg').style.display='none';
     document.getElementById('stopBtn').style.display='none';
+    document.getElementById('hero').style.display='none';
     document.getElementById('reBtn').style.display='block';
     document.getElementById('die').style.display='block';
     document.getElementById('gameover').style.display='block';
     document.getElementById('totalScore').style.display='inline-block';
-
+    
 }
 
 const reFunc = () =>{

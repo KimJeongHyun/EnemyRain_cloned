@@ -20,7 +20,9 @@ class Enemy {
     }
 
     removeEnemyNode(){
-        this.newElem.parentNode.removeChild(this.newElem);
+        if (this.newElem.parentNode!==null){
+            this.newElem.parentNode.removeChild(this.newElem);
+        }
     }
 
     enemyDyingSound(){

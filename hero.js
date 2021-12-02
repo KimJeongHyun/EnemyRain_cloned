@@ -24,8 +24,8 @@ class Hero {
     initHeroPosition(){
         this.x=400;
         this.y=540;
-        this.hero.style.top=this.y+'px';
-        this.hero.style.left=this.x+'px';
+        this.hero.style.top='540px';
+        this.hero.style.left='400px';
         this.hero.style.backgroundPosition='0px';
     }
     

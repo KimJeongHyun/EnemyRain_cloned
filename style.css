@@ -29,6 +29,7 @@
     top:540px;
     left:400px;
     background-position:0px;
+    display:none;
 }
 
 
@@ -50,6 +51,7 @@
     position:absolute;
     left:46%;
     bottom:35%;
+    display:none;
 }
 
 #die{
