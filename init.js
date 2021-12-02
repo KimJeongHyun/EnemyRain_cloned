@@ -104,6 +104,7 @@ const endFunc = () =>{
     document.getElementById('reBtn').style.display='block';
     document.getElementById('die').style.display='block';
     document.getElementById('gameover').style.display='block';
+    document.getElementById('score').style.display='none';
     document.getElementById('totalScore').style.display='inline-block';
     
 }
@@ -114,5 +115,6 @@ const reFunc = () =>{
     document.getElementById('reBtn').style.display='none';
     document.getElementById('die').style.display='none';
     document.getElementById('gameover').style.display='none';
+    document.getElementById('score').style.display='block';
     document.getElementById('totalScore').style.display='none';
 }
