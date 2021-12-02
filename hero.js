@@ -20,36 +20,14 @@ class Hero {
         this.hero.style.backgroundPosition='35px';
         this.hero.style.left = this.x+'px';
     }
+
+    initHeroPosition(){
+        this.x=400;
+        this.y=540;
+        this.hero.style.top=this.y+'px';
+        this.hero.style.left=this.x+'px';
+        this.hero.style.backgroundPosition='0px';
+    }
     
 }
 
-const hero = new Hero();
-
-window.addEventListener('keydown',(e)=>{
-    switch(e.key){
-        case 'ArrowRight':
-            if (hero.x<bg.offsetWidth-35){
-                hero.moveRight()
-                hero.x+=5;
-            }
-            break;
-        case 'ArrowLeft':
-            if (hero.x>0){
-                hero.moveLeft()
-                hero.x-=5;
-            }
-            break;
-        case 'ArrowUp':
-            if (hero.y>0){
-                hero.moveTop();
-                hero.y-=5;
-            }
-            break;
-        case 'ArrowDown':
-            if (hero.y<=540){
-                hero.moveBottom();
-                hero.y+=5;
-            }
-            break;
-    }
-})
