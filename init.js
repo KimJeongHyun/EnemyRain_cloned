@@ -1,88 +1,118 @@
-const bg = document.getElementById('bg')
-
 let interval = '';
 
-const heroTag = new Hero();
+const initScore = () =>{
+    const scoreVal = document.getElementById('scoreVal');
+    scoreVal.innerText = 0;
+}
 
-window.addEventListener('keydown',(e)=>{
-    switch(e.key){
-        case 'ArrowRight':
-            if (heroTag.x<bg.offsetWidth-35){
-                heroTag.moveRight()
-                heroTag.x+=5;
-            }
-            break;
-        case 'ArrowLeft':
-            if (heroTag.x>0){
-                heroTag.moveLeft()
-                heroTag.x-=5;
-            }
-            break;
-        case 'ArrowUp':
-            if (heroTag.y>0){
-                heroTag.moveTop();
-                heroTag.y-=5;
-            }
-            break;
-        case 'ArrowDown':
-            if (heroTag.y<=540){
-                heroTag.moveBottom();
-                heroTag.y+=5;
-            }
-            break;
+const initTotalScore = () =>{
+    const totalVal = document.getElementById('totalVal');
+    totalVal.innerText = 0;
+}
+
+const addScore = () =>{
+    const scoreVal = document.getElementById('scoreVal');
+    scoreVal.innerText = parseInt(scoreVal.innerText)+1;
+}
+
+const getTotalScore = () =>{
+    const totalVal = document.getElementById('totalVal');
+    totalVal.innerText = parseInt(document.getElementById('scoreVal').innerText)
+}
+
+const removeEnemies = () =>{
+    const enemies = document.getElementsByClassName('enemy')
+    while(enemies.length>0){
+        for (let i=0; i<enemies.length; i++){
+            document.getElementById('bg').removeChild(enemies[i]);
+        }
     }
-})
-
-const checkCollision = () =>{
-    
 }
 
 const startFunc = () =>{
     document.getElementById('startBtn').style.display='none';
     document.getElementById('stopBtn').style.display='inline-block';
-
+    
+    const heroTag = new Hero();
     heroTag.initHeroPosition();
+    initScore();
+    initTotalScore();
+
+    window.addEventListener('keydown',(e)=>{
+        switch(e.key){
+            case 'ArrowRight':
+                if (heroTag.x<document.getElementById('bg').offsetWidth-35){
+                    heroTag.moveRight()
+                    heroTag.x+=5;
+                }
+                break;
+            case 'ArrowLeft':
+                if (heroTag.x>0){
+                    heroTag.moveLeft()
+                    heroTag.x-=5;
+                }
+                break;
+            case 'ArrowUp':
+                if (heroTag.y>0){
+                    heroTag.moveTop();
+                    heroTag.y-=5;
+                }
+                break;
+            case 'ArrowDown':
+                if (heroTag.y<=540){
+                    heroTag.moveBottom();
+                    heroTag.y+=5;
+                }
+                break;
+        }
+    })
 
     interval = setInterval(function(){
-        const ghost = new Enemy();
+        const enemy = new Enemy();
         
-        const ghostIndex = Math.random()*100
-        const ghostX = Math.random()*765+'px';
-        ghost.newElem.style.left = ghostX;
-        ghost.x = ghostX;
+        const enemyX = Math.random()*765+'px';
 
-        ghost.newElem.id = ghostIndex;
-        
-        const moveBottomInterval = setInterval(function(){
-            if (ghost.y<=540){
-                ghost.moveBottom();
-                ghost.y+=180;
-                console.log(ghost.x+' '+ghost.y);
-            }else{
-                ghost.setCollision();
-            }
-            
-        },800)
-        bg.appendChild(ghost.newElem);
-        if (ghost.y>=540){
-            clearInterval(moveBottomInterval);
-            ghost.setCollision();
-        }
+        enemy.newElem.style.left = enemyX;
+        enemy.x = parseInt(enemyX.split('px')[0]);
 
+        document.getElementById('bg').appendChild(enemy.newElem);
+
+        enemy.setEnemyInterval();
         
-    },1500)
+    },3000)
 }
 
 const stopFunc = () =>{
     clearInterval(interval);
-    const enemies = document.getElementsByClassName('enemy')
-    while(enemies.length>0){
-        for (let i=0; i<enemies.length; i++){
-            bg.removeChild(enemies[i]);
-        }
-    }
-    heroTag.initHeroPosition();
+    removeEnemies();
+    new Hero().initHeroPosition();
+    initScore();
+
     document.getElementById('stopBtn').style.display='none';
     document.getElementById('startBtn').style.display='inline-block';
 }
 
+const endFunc = () =>{
+    clearInterval(interval);
+    removeEnemies();
+    new Hero().initHeroPosition();
+    getTotalScore();
+    initScore();
+
+    document.getElementById('bg').style.display='none';
+    document.getElementById('stopBtn').style.display='none';
+    document.getElementById('reBtn').style.display='block';
+    document.getElementById('die').style.display='block';
+    document.getElementById('gameover').style.display='block';
+    document.getElementById('totalScore').style.display='inline-block';
+
+}
+
+const reFunc = () =>{
+    document.getElementById('bg').style.display='block';
+    document.getElementById('startBtn').style.display='block';
+    document.getElementById('reBtn').style.display='none';
+    document.getElementById('die').style.display='none';
+    document.getElementById('gameover').style.display='none';
+    document.getElementById('totalScore').style.display='none';
+}

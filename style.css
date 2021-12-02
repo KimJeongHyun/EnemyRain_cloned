@@ -1,11 +1,15 @@
 #btnContainer{
-    text-align: center;
+    display:flex;
+    justify-content: center;
 }
 
 #btnContainer #stopBtn{
     display:none;
 }
 
+#btnContainer #reBtn{
+    display:none;
+}
 
 
 #bg{
@@ -27,6 +31,7 @@
     background-position:0px;
 }
 
+
 #bg .enemy{
     background-image:url('./images/enemy.png');
     position:absolute;
@@ -34,3 +39,40 @@
     height:54px;
     background-position:0px;
 }
+
+#score{
+    position:absolute;
+    top:20%;
+    left:10%;
+}
+
+#totalScore{
+    position:absolute;
+    left:46%;
+    bottom:35%;
+}
+
+#die{
+    background-image:url('./images/die.png');
+    position:absolute;
+    width:290.69px;
+    height:205px;
+    bottom:45%;
+    left:45%;
+    background-size:cover;
+    display:none;
+    z-index:2;
+}
+
+#gameover{
+    background-image:url('./images/gameover.png');
+    position:absolute;
+    width:300px;
+    height:275px;
+    background-size:cover;
+    left:35%;
+    bottom:50%;
+    display:none;
+    z-index:1;
+}
+

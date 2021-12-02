@@ -10,11 +10,20 @@
     <div id='btnContainer'>
       <button id='startBtn' onclick="startFunc()">START!</button>
       <button id='stopBtn' onclick="stopFunc()">STOP!</button>
+      <button id='reBtn' onclick="reFunc()">Re?</button>
     </div>
-    
+
     <div id="bg">
         <div id='hero'></div>
     </div>
+    <div id='die'></div>
+    <div id='gameover'></div>
+    <span id='score'>
+      획득 점수 : <span id='scoreVal'>0</span>
+    </span>
+    <span id='totalScore'>
+      최종 점수 : <span id='totalVal'></span>
+    </span>
     <script src="hero.js"></script>
     <script src="enemy.js"></script>
     <script src="init.js"></script>
