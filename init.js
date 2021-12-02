@@ -29,16 +29,9 @@ const removeEnemies = () =>{
     }
 }
 
-const startFunc = () =>{
-    document.getElementById('hero').style.display='block';
-    document.getElementById('startBtn').style.display='none';
-    document.getElementById('stopBtn').style.display='inline-block';
-    
+const setEvent = () =>{
     const heroTag = new Hero();
     heroTag.initHeroPosition();
-    initScore();
-    initTotalScore();
-
     window.addEventListener('keydown',(e)=>{
         switch(e.key){
             case 'ArrowRight':
@@ -67,7 +60,16 @@ const startFunc = () =>{
                 break;
         }
     })
+}
 
+const startFunc = () =>{
+    document.getElementById('hero').style.display='block';
+    document.getElementById('startBtn').style.display='none';
+    document.getElementById('stopBtn').style.display='inline-block';
+    setEvent();
+    initScore();
+    initTotalScore();
+    
     interval = setInterval(function(){
         const enemy = new Enemy();
         
@@ -87,8 +89,8 @@ const stopFunc = () =>{
     clearInterval(interval);
     removeEnemies();
     initScore();
-    document.getElementById('stopBtn').style.display='none';
     document.getElementById('hero').style.display='none';
+    document.getElementById('stopBtn').style.display='none';
     document.getElementById('startBtn').style.display='inline-block';
 }
 
@@ -98,9 +100,9 @@ const endFunc = () =>{
     getTotalScore();
     initScore();
 
+    document.getElementById('hero').style.display='none';
     document.getElementById('bg').style.display='none';
     document.getElementById('stopBtn').style.display='none';
-    document.getElementById('hero').style.display='none';
     document.getElementById('reBtn').style.display='block';
     document.getElementById('die').style.display='block';
     document.getElementById('gameover').style.display='block';
