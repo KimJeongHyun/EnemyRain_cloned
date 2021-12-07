@@ -6,8 +6,8 @@ const initScore = () =>{
 }
 
 const initTotalScore = () =>{
-    const totalVal = document.getElementById('totalVal');
-    totalVal.innerText = 0;
+    const totalScoreVal = document.getElementById('totalScoreVal');
+    totalScoreVal.innerText = 0;
 }
 
 const addScore = () =>{
@@ -16,8 +16,8 @@ const addScore = () =>{
 }
 
 const getTotalScore = () =>{
-    const totalVal = document.getElementById('totalVal');
-    totalVal.innerText = parseInt(document.getElementById('scoreVal').innerText)
+    const totalScoreVal = document.getElementById('totalScoreVal');
+    totalScoreVal.innerText = parseInt(document.getElementById('scoreVal').innerText)
 }
 
 const removeEnemies = () =>{
@@ -29,7 +29,7 @@ const removeEnemies = () =>{
     }
 }
 
-const setEvent = () =>{
+const setHeroEvent = () =>{
     const heroTag = new Hero();
     heroTag.initHeroPosition();
     window.addEventListener('keydown',(e)=>{
@@ -66,7 +66,7 @@ const startFunc = () =>{
     document.getElementById('hero').style.display='block';
     document.getElementById('startBtn').style.display='none';
     document.getElementById('stopBtn').style.display='inline-block';
-    setEvent();
+    setHeroEvent();
     initScore();
     initTotalScore();
     
